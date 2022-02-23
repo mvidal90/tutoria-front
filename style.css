@@ -1,0 +1,17 @@
+.nav-custom{
+    background-color: bisque;
+}
+
+.side-menu{
+    width: 20vw;
+    height: 100vh;
+    background-color: cadetblue;
+    display: block;
+    padding: 24px;
+}
+
+main{
+    background-color: cornflowerblue;
+    width: 80vw;
+    height: 100vh;
+}
