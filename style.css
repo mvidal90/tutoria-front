@@ -1,17 +1,34 @@
+main{
+    width: 85vw;
+    height: 100vh;
+    padding-top: 2rem;
+}
+
+input {
+    width: 100%;
+}
+
+select {
+    width: 100%;
+}
+
 .nav-custom{
     background-color: bisque;
 }
 
 .side-menu{
-    width: 20vw;
-    height: 100vh;
-    background-color: cadetblue;
+    background-color: rgb(189, 239, 241);
+    box-shadow: 1px 1px 1px 2px rgba(0, 0, 0, 0.1);
     display: block;
+    height: 100vh;
     padding: 24px;
+    width: 15vw;
 }
 
-main{
-    background-color: cornflowerblue;
-    width: 80vw;
-    height: 100vh;
+.box-filters {
+    background-color: rgb(235, 232, 232);
+    border-radius: 8px;
+    min-height: 20px;
+    margin-top: 2rem;
+    padding: 1rem;
 }
