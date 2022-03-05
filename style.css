@@ -2,6 +2,12 @@ main{
     width: 85vw;
     height: 100vh;
     padding-top: 2rem;
+    overflow: auto;
+    max-height: 100%;
+}
+
+body {
+  overflow: hidden;
 }
 
 input {
@@ -10,6 +16,10 @@ input {
 
 select {
     width: 100%;
+}
+
+table {
+  margin-bottom: 2rem;
 }
 
 .nav-custom{
@@ -78,8 +88,4 @@ select {
   .table-genes-head-item{
     padding: 0 0.5rem;
     border: 1px solid grey;
-  }
-
-  .table-genes-item-hidden{
-    display: none;
   }
