@@ -1,30 +1,6 @@
-
-let activeSection = "Historic";
-
-const selectSection = (section) => {
-    activeSection = section;
-
-    switch (activeSection) {
-        case "Historic":
-            
-            break;
-
-        case "Filters":
-            
-            break;
-        case "Panel":
-            
-            break;
-    
-        default:
-            
-            break;
-    }
-}
-
 function openTab(evt, tabName) {
     // Declare all variables
-    var i, tabcontent, tablinks,jsonResponse, genesFenotipoJSON;
+    var i, tabcontent, tablinks,jsonResponse;
     var xhttp = new XMLHttpRequest();
     var urlGenesFenotipo= "http://127.0.0.1:5500/json/genesFenotipo.json";
     xhttp.responseType = 'json';
@@ -58,6 +34,73 @@ function openTab(evt, tabName) {
     }
 }
 
-const showIDs = () => {
-    // document.getElementsById("table-genes-item-hidden").style.display= "block" 
+function renderTable(jsonArray){
+
+  // Obtener la referencia del elemento body
+var body = document.getElementsByTagName("body")[0];
+
+// Crea un elemento <table> y un elemento <tbody>
+var tabla = document.getElementById("genesFenTable");
+var tblBody = document.createElement("tbody");
+
+// Crea las celdas
+for (var i = 0; i < 51; i++) {
+  // Crea las hileras de la tabla
+  var hilera = document.createElement("tr");
+  var myArr = jsonArray[i];
+
+  Object.entries(myArr).forEach(([key, value]) => {
+    // Crea un elemento <td> y un nodo de texto, haz que el nodo de
+    // texto sea el contenido de <td>, ubica el elemento <td> al final
+    // de la hilera de la tabla
+    var celda = document.createElement("td");
+    console.log( "Value "+value );
+    var textoCelda = document.createTextNode(value);
+    celda.appendChild(textoCelda);
+    hilera.appendChild(celda);
+  });
+
+
+  // agrega la hilera al final de la tabla (al final del elemento tblbody)
+  tblBody.appendChild(hilera);
+}
+
+// posiciona el <tbody> debajo del elemento <table>
+tabla.appendChild(tblBody);
+// appends <table> into <body>
+body.appendChild(tabla);
+// modifica el atributo "border" de la tabla y lo fija a "2";
+tabla.setAttribute("border", "2");
+}
+
+const showIDs = () => { 
+  var text ="id";
+  for (let i = 0; i < 12; i++) {
+      document.getElementById(text.concat(i.toString())).style.display="block";
+    }
+
+}
+
+
+let activeSection = "Historic";
+
+const selectSection = (section) => {
+    activeSection = section;
+
+    switch (activeSection) {
+        case "Historic":
+            
+            break;
+
+        case "Filters":
+            
+            break;
+        case "Panel":
+            
+            break;
+    
+        default:
+            
+            break;
+    }
 }
