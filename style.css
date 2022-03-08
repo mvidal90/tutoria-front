@@ -22,6 +22,11 @@ table {
   margin-bottom: 2rem;
 }
 
+td{
+  height: 23px;
+  font-size: 12px;
+}
+
 .nav-custom{
     background-color: bisque;
 }

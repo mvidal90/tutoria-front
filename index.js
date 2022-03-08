@@ -27,6 +27,7 @@ const openTab = (evt, tabName) => {
 
   xhttp.onreadystatechange = () => {
     if (xhttp.readyState === 4 && xhttp.status === 200) {
+      console.log(xhttp.response)
       const jsonResponse = 
         xhttp.response.map( obj => ({
           ...obj,
@@ -40,7 +41,8 @@ const openTab = (evt, tabName) => {
           "HVAR_pred": obj["HVAR_pred"].split(",")[transcript], 
           "SIFT_pred": obj["SIFT_pred"].split(",")[transcript], 
           "Taster_pred": obj["Taster_pred"].split(",")[transcript],
-          "Assessor_pred": obj["Assessor_pred"].split(",")[transcript]
+          "Assessor_pred": obj["Assessor_pred"].split(",")[transcript],
+          "ExAC_AF": obj["ExAC_AF"] ? parseFloat(obj["ExAC_AF"]).toFixed(4) : "",
         }));
 
       rows = jsonResponse;
@@ -95,7 +97,7 @@ const showIDs = () => {
   for (let i = 0; i < primaryKeys.length; i++) {
     const head = document.getElementById(textHead.concat(i.toString()));
     if (head.style.display === "none") {
-      head.style.display = "block";
+      head.style.display = "table-cell";
     } else {
       head.style.display = "none"
     }
@@ -105,7 +107,7 @@ const showIDs = () => {
     for (let k = 0; k < primaryKeys.length; k++) {
       const celda = document.getElementById(`${textTr}${primaryKeys[k]}-${i}`);
       if (celda.style.display === "none") {
-        celda.style.display = "block";
+        celda.style.display = "table-cell";
       } else {
         celda.style.display = "none"
       }
