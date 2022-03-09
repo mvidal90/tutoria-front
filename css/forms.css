@@ -1,0 +1,9 @@
+.box-forms {
+    background-color: rgb(235, 232, 232);
+    border-radius: 8px;
+    min-height: 80px;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    padding: 2rem;
+}
