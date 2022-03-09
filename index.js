@@ -1,3 +1,4 @@
+
 const transcript = 5;
 const primaryKeys = [ "CHROM", "POS", "REF", "ALT", "GT", "AD", "DP", "ID", "GENE", "HGVS_C", "HGVS_P", "FEATUREID"];
 let rows;
@@ -6,7 +7,7 @@ const openTab = (evt, tabName) => {
   // Declare all variables
   let i, tabcontent, tablinks;
   const xhttp = new XMLHttpRequest();
-  const urlGenesFenotipo = "http://127.0.0.1:5500/json/genesFenotipo.json";
+  const urlGenesFenotipo = "/json/genesFenotipo.json";
   xhttp.responseType = 'json';
 
   // Get all elements with class="tabcontent" and hide them
@@ -116,26 +117,24 @@ const showIDs = () => {
 
 }
 
-
-let activeSection = "Historic";
+const getSection = (activeSection = "/pages/historia-clinica.html") => activeSection;
 
 const selectSection = (section) => {
-  activeSection = section;
-
-  switch (activeSection) {
+  switch (section) {
     case "Historic":
-
-      break;
+      activeSection("/pages/historia-clinica.html")
+      return;
 
     case "Filters":
+      activeSection("/pages/variants-filtered.html")
+      return;
 
-      break;
     case "Panel":
-
-      break;
+      activeSection("/pages/panel-bioinformatico.html");
+      return;
 
     default:
-
-      break;
+      activeSection("/pages/historia-clinica.html")
+      return; 
   }
 }
