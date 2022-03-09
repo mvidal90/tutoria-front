@@ -31,16 +31,14 @@
     <div class="d-flex">
         <aside class="side-menu">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a href="http://127.0.0.1:5500/historia/historiaClinica.html" class="link-dark rounded">Historia
-                        Clínica</a></li>
-                <li><a href="http://127.0.0.1:5500/filtrado/filtros.html" class="link-dark rounded">Filtrado de
-                        Variantes</a></li>
-                <li><a href="http://127.0.0.1:5500/panel/panel.html" class="link-dark rounded">Panel Bio-informático</a>
-                </li>
+                <li onclick="selectSection('Historic')" class="link-dark rounded">Historia
+                        Clínica</li>
+                <li onclick="selectSection('Filters')" class="link-dark rounded">Filtrado de Variantes</li>
+                <li onclick="selectSection('Panel')" class="link-dark rounded">Panel Bio-informático</li>
             </ul>
         </aside>
         <main>
-            <iframe id="main-section" title="main-section" src="getSection()"></iframe>
+            <iframe id="main-section" title="main-section" src="/pages/historia-clinica.html"></iframe>
         </main>
         <script src="/index.js"></script>
     </div>

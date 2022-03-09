@@ -117,24 +117,22 @@ const showIDs = () => {
 
 }
 
-const getSection = (activeSection = "/pages/historia-clinica.html") => activeSection;
-
 const selectSection = (section) => {
   switch (section) {
     case "Historic":
-      activeSection("/pages/historia-clinica.html")
+      document.getElementById("main-section").src = "/pages/historia-clinica.html";
       return;
 
     case "Filters":
-      activeSection("/pages/variants-filtered.html")
+      document.getElementById("main-section").src = "/pages/variants-filtred.html";
       return;
 
     case "Panel":
-      activeSection("/pages/panel-bioinformatico.html");
+      document.getElementById("main-section").src = "/pages/panel-bioinformatico.html";
       return;
 
     default:
-      activeSection("/pages/historia-clinica.html")
+      document.getElementById("main-section").src = "/pages/historia-clinica.html";
       return; 
   }
 }
