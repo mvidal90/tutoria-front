@@ -8,10 +8,14 @@
     <title>UNLP Facultad de Informática</title>
     <link href="../css/style.css" rel="stylesheet" />
     <link href="../css/tabs.css" rel="stylesheet"/>
-    <script src="../js/index.js"></script>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
         integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
     <link rel="localization" hreflang="en" href="../json/genesFenotipo.json" type="application/l10n+json"/>
+    <link rel="localization" hreflang="en" href="../json/incidental.json" type="application/l10n+json"/>
+    <link rel="localization" hreflang="en" href="../json/pathogenic.json" type="application/l10n+json"/>
+    <link rel="localization" hreflang="en" href="../json/todos.json" type="application/l10n+json"/>
 </head>
 
 <body>
@@ -44,7 +48,7 @@
                             </div>
                             <div class="col col-lg-4 col-md-4 col-xs-12">
                                 <label>Frecuencia Poblacional</label>
-                                <input type="range" min="0" max="0.05" step="any" />
+                                <input id="frecuenciaPoblacional" type="range" min="0" max="0.05" step="any" onchange="mostrarValorFrecuencia()"/><p id="valorFrecuencia"></p>
                             </div>
                         </div>
                         <div class="row mt-3">
@@ -111,7 +115,121 @@
         <div class="row">
             <div id="genesFenotipo" class="col col-12 table-genes-scroll tabcontent">
                 <button onclick="showIDs()" class="btn btn-success mb-3">Show ID</button>
-                <table id="genesFenTable" class="table-genes">
+                <table id="genesFenotipo" class="table-genes">
+                    <thead class="table-genes-head">
+                        <th id="id0" class="table-genes-head-item">CHROM</th>
+                        <th id="id1" class="table-genes-head-item">POS</th>
+                        <th id="id2" class="table-genes-head-item">REF</th>
+                        <th id="id3" class="table-genes-head-item">ALT</th>
+                        <th id="id4" class="table-genes-head-item">GEN[0].GT</th>
+                        <th id="id5" class="table-genes-head-item">GEN[0].AD</th>
+                        <th id="id6" class="table-genes-head-item">GEN[0].DP</th>
+                        <th id="id7" class="table-genes-head-item">ID</th>
+                        <th id="id8" class="table-genes-head-item">ANN[*].GENE</th>
+                        <th id="id9" class="table-genes-head-item">ANN[*].HGVS_C</th>
+                        <th id="id10" class="table-genes-head-item">ANN[*].HGVS_P</th>
+                        <th id="id11" class="table-genes-head-item">ANN[*].FEATUREID</th>
+                        <th class="table-genes-head-item">ANN[*].EFFECT</th>
+                        <th class="table-genes-head-item">ANN[*].IMPACT</th>
+                        <th class="table-genes-head-item">dbNSFP_ExAC_AF</th>
+                        <th class="table-genes-head-item">AN_Adj</th>
+                        <th class="table-genes-head-item">AC_Adj</th>
+                        <th class="table-genes-head-item">ExAC_AF</th>
+                        <th class="table-genes-head-item">dbNSFP Polyphen2 HDIV pred</th>
+                        <th class="table-genes-head-item">dbNSFP_Polyphen2 HVAR pred</th>
+                        <th class="table-genes-head-item">dbNSFP SIFT pred</th>
+                        <th class="table-genes-head-item">dbNSFP MutationTaster pred</th>
+                        <th class="table-genes-head-item">dbNSFP MutationAssessor pred</th>
+                        <th class="table-genes-head-item">CLNSIG</th>
+                        <th class="table-genes-head-item">CLNSIGCONF</th>
+                        <th class="table-genes-head-item">Términos HPO</th>
+                        <th class="table-genes-head-item">Patrón de Herencia</th>
+                        <th class="table-genes-head-item">Relación con el Fenotipo</th>
+                        <th class="table-genes-head-item">Es Variante Candidata</th>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div id="pathogenic" class="col col-12 table-genes-scroll tabcontent">
+                <button onclick="showIDs()" class="btn btn-success mb-3">Show ID</button>
+                <table id="pathogenic" class="table-genes">
+                    <thead class="table-genes-head">
+                        <th id="id0" class="table-genes-head-item">CHROM</th>
+                        <th id="id1" class="table-genes-head-item">POS</th>
+                        <th id="id2" class="table-genes-head-item">REF</th>
+                        <th id="id3" class="table-genes-head-item">ALT</th>
+                        <th id="id4" class="table-genes-head-item">GEN[0].GT</th>
+                        <th id="id5" class="table-genes-head-item">GEN[0].AD</th>
+                        <th id="id6" class="table-genes-head-item">GEN[0].DP</th>
+                        <th id="id7" class="table-genes-head-item">ID</th>
+                        <th id="id8" class="table-genes-head-item">ANN[*].GENE</th>
+                        <th id="id9" class="table-genes-head-item">ANN[*].HGVS_C</th>
+                        <th id="id10" class="table-genes-head-item">ANN[*].HGVS_P</th>
+                        <th id="id11" class="table-genes-head-item">ANN[*].FEATUREID</th>
+                        <th class="table-genes-head-item">ANN[*].EFFECT</th>
+                        <th class="table-genes-head-item">ANN[*].IMPACT</th>
+                        <th class="table-genes-head-item">dbNSFP_ExAC_AF</th>
+                        <th class="table-genes-head-item">AN_Adj</th>
+                        <th class="table-genes-head-item">AC_Adj</th>
+                        <th class="table-genes-head-item">ExAC_AF</th>
+                        <th class="table-genes-head-item">dbNSFP Polyphen2 HDIV pred</th>
+                        <th class="table-genes-head-item">dbNSFP_Polyphen2 HVAR pred</th>
+                        <th class="table-genes-head-item">dbNSFP SIFT pred</th>
+                        <th class="table-genes-head-item">dbNSFP MutationTaster pred</th>
+                        <th class="table-genes-head-item">dbNSFP MutationAssessor pred</th>
+                        <th class="table-genes-head-item">CLNSIG</th>
+                        <th class="table-genes-head-item">CLNSIGCONF</th>
+                        <th class="table-genes-head-item">Términos HPO</th>
+                        <th class="table-genes-head-item">Patrón de Herencia</th>
+                        <th class="table-genes-head-item">Relación con el Fenotipo</th>
+                        <th class="table-genes-head-item">Es Variante Candidata</th>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div id="incidental" class="col col-12 table-genes-scroll tabcontent">
+                <button onclick="showIDs()" class="btn btn-success mb-3">Show ID</button>
+                <table id="incidental" class="table-genes">
+                    <thead class="table-genes-head">
+                        <th id="id0" class="table-genes-head-item">CHROM</th>
+                        <th id="id1" class="table-genes-head-item">POS</th>
+                        <th id="id2" class="table-genes-head-item">REF</th>
+                        <th id="id3" class="table-genes-head-item">ALT</th>
+                        <th id="id4" class="table-genes-head-item">GEN[0].GT</th>
+                        <th id="id5" class="table-genes-head-item">GEN[0].AD</th>
+                        <th id="id6" class="table-genes-head-item">GEN[0].DP</th>
+                        <th id="id7" class="table-genes-head-item">ID</th>
+                        <th id="id8" class="table-genes-head-item">ANN[*].GENE</th>
+                        <th id="id9" class="table-genes-head-item">ANN[*].HGVS_C</th>
+                        <th id="id10" class="table-genes-head-item">ANN[*].HGVS_P</th>
+                        <th id="id11" class="table-genes-head-item">ANN[*].FEATUREID</th>
+                        <th class="table-genes-head-item">ANN[*].EFFECT</th>
+                        <th class="table-genes-head-item">ANN[*].IMPACT</th>
+                        <th class="table-genes-head-item">dbNSFP_ExAC_AF</th>
+                        <th class="table-genes-head-item">AN_Adj</th>
+                        <th class="table-genes-head-item">AC_Adj</th>
+                        <th class="table-genes-head-item">ExAC_AF</th>
+                        <th class="table-genes-head-item">dbNSFP Polyphen2 HDIV pred</th>
+                        <th class="table-genes-head-item">dbNSFP_Polyphen2 HVAR pred</th>
+                        <th class="table-genes-head-item">dbNSFP SIFT pred</th>
+                        <th class="table-genes-head-item">dbNSFP MutationTaster pred</th>
+                        <th class="table-genes-head-item">dbNSFP MutationAssessor pred</th>
+                        <th class="table-genes-head-item">CLNSIG</th>
+                        <th class="table-genes-head-item">CLNSIGCONF</th>
+                        <th class="table-genes-head-item">Términos HPO</th>
+                        <th class="table-genes-head-item">Patrón de Herencia</th>
+                        <th class="table-genes-head-item">Relación con el Fenotipo</th>
+                        <th class="table-genes-head-item">Es Variante Candidata</th>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div id="todos" class="col col-12 table-genes-scroll tabcontent">
+                <button onclick="showIDs()" class="btn btn-success mb-3">Show ID</button>
+                <table id="todos" class="table-genes">
                     <thead class="table-genes-head">
                         <th id="id0" class="table-genes-head-item">CHROM</th>
                         <th id="id1" class="table-genes-head-item">POS</th>
@@ -148,4 +266,6 @@
         </div>
     </div>
 </body>
+<script src="../js/tabs.js"></script>
+<script src="../js/forms.js"></script>
 </html>

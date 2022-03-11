@@ -6,11 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UNLP Facultad de Informática</title>
     <link rel="stylesheet" href="../css/forms.css">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
         integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="localization" hreflang="en" href="../json/genesFenotipo.json" type="application/l10n+json"/>
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -22,38 +21,38 @@
         </div>
         <div class="row">
             <div class="col col-8 col-md-8">
+                <form>
                 <div class="box-forms">
                     <div class="row">
                         <label for="nroHistoriaClinica" class="form-label">Número de Historia Clínica:</label><br>
-                        <input id="nroHistoriaClinica" name="nroHistoriaClinica" type="text" value="561097" class="form-control">
+                        <input id="nroHistoriaClinica" name="nroHistoriaClinica" type="text" class="form-control">
                     </div>
                     <div class="row">
-                        <label for="dniPaciente">DNI:</label><br>
+                        <label for="dniPaciente" class="form-label">DNI:</label><br>
                         <input id="dniPaciente" name="dniPaciente" type="text" class="form-control">
                     </div>
-                    <div class="row mb-5">
-                        <label for="motivoConsulta">Motivo de la Consulta:</label><br>
-                        <textarea id="motivoConsulta" name="motivoConsulta" rows="15" cols="50"></textarea>
+                    <div class="row">
+                        <label for="motivoConsulta" class="form-label">Motivo de la Consulta:</label><br>
+                        <textarea id="motivoConsulta" name="motivoConsulta" rows="5" cols="50" class="form-control"></textarea>
                     </div>
                     <div class="row">
-                        <select class="select form-control" multiple>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                            <option value="4">Four</option>
-                            <option value="5">Five</option>
-                            <option value="6">Six</option>
-                            <option value="7">Seven</option>
-                            <option value="8">Eight</option>
-                          </select>
+                        <label for="arbolGenealogico" class="form-label">Arbol Genealógico:</label><br>
+                        <textarea id="arbolGenealogico" name="arbolGenealogico" rows="5" cols="50" class="form-control"></textarea>
                     </div>
-                    <div class="row"></div>
-                    <div class="row"></div>
-                    <div class="row"></div>
+                    <div class="row">
+                        <label for="terminosHPO" class="form-label">Términos HPO:</label><br>
+                        <textarea id="terminosHPO" name="terminosHPO" rows="5" cols="50" class="form-control"></textarea>
+                    </div>
+                    <div class="row">
+                        <button onclick="ocultarElemento('operacionExitosa')" class="btn btn-success mb-3">Aceptar</button>
+                        <button class="btn btn-success mb-3">Cancelar</button>
+                    </div>
+                    <div id="operacionExitosa" class="operacionExitosa">La operación se ha realizado con éxito.</div>
                 </div>
+                </form>
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+    <script src="../js/forms.js"></script>
 </body>
 </html>
