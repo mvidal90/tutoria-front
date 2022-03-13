@@ -1,12 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UNLP Facultad de Informática</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/forms.css" rel="stylesheet" />
+
 </head>
+
 <body class="scroll-auto">
-    
+    <div class="container">
+        <div class="row">
+            <div class="col col-12">
+                <h2>Panel Bio-informático</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-12 col-md-12 col-lg-8">
+                <form>
+                <div class="box-forms">
+                    <div class="row">
+                        <label class="form-label">Fenotipo (por término HPO o por enfermedad):</label>
+                        <input name="fenotipo" type="text" class="form-control">
+                    </div>
+                    <div class="row mt3">
+                        <div class="col col12">
+                            <button onclick="ocultarElemento('operacionExitosa')" class="btn btn-success mt-3">Aceptar</button>
+                            <button class="btn btn-success mt-3">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col col-12 table-genes-scroll tabcontent">
+                <table id="genesFenotipo" class="table-genes">
+                    <thead class="table-genes-head">
+                        <th>CHROM</th>
+                        <th>POS</th>
+                        <th>REF</th>
+                        <th>ALT</th>
+                        <th>GEN[0].GT</th>
+                        <th>GEN[0].AD</th>
+                        <th>GEN[0].DP</th>
+                        <th>ID</th>
+                        <th>ANN[*].GENE</th>
+                        <th>ANN[*].HGVS_C</th>
+                        <th>ANN[*].HGVS_P</th>
+                        <th>ANN[*].FEATUREID</th>
+                        <th>Términos HPO</th>
+                        <th>Patrón de Herencia</th>
+                        <th>Relación con el Fenotipo</th>
+                        <th>Es Variante Candidata</th>
+                        <th>Número de Historia Clínica</th>
+                        <th>Informe de Resultados</th>
+                        <th>Informe Clínico</th>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
 </body>
-</html>

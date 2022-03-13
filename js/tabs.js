@@ -136,9 +136,6 @@ const renderTable = (jsonArray) => {
 
     // agrega la hilera al final de la tabla (al final del elemento tblbody)
     tblBody.appendChild(hilera);
-
-    //código alerta variante candidata y relación con el fenotipo
-
   
   }
 
