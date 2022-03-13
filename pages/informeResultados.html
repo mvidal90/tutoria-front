@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNLP Facultad de Informática</title>
+    <link rel="stylesheet" href="../css/forms.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col col-12">
+                <h2>Informe de Resultados</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-8 col-md-8">
+                <form>
+                <div class="box-forms">
+                    <div class="row">
+                        <label class="form-label">Indicación clínica</label>
+                        <textarea id="informacionClinica" rows="5" cols="50" class="form-control"></textarea>
+                    </div>
+                    <div class="row">
+                        <label class="form-label">Resultados</label>
+                        <textarea id="resultados" rows="5" cols="50" class="form-control"></textarea>
+                    </div>
+                    <div class="row">
+                        <label class="form-label">Diagnóstico molecular</label>
+                        <textarea id="diagnosticoMolecular" rows="5" cols="50" class="form-control"></textarea>
+                    </div>
+                    <div class="row">
+                        <label class="form-label">Metodología utilizada para la detección</label>
+                        <textarea id="metodologia" rows="5" cols="50" class="form-control"></textarea>
+                    </div>
+                    <div class="row">
+                        <label class="form-label">Informe clínico</label>
+                        <textarea id="signosPatologia" rows="5" cols="50" class="form-control"></textarea>
+                    </div>
+                    <div class="row">
+                        <label class="form-label">Interpretación clínico-biológica</label>
+                        <textarea id="interpretacion" rows="5" cols="50" class="form-control"></textarea>
+                    </div>
+                    <div class="row">
+                        <label class="form-label">Descripción de genes intermedios</label>
+                        <textarea id="genesIntermedios" rows="5" cols="50" class="form-control"></textarea>
+                    </div>
+                    <div class="row">
+                        <label class="form-label">Información suplementaria</label>
+                        <textarea id="informacionSuplementaria" rows="5" cols="50" class="form-control"></textarea>
+                    </div>
+                    <div class="row">
+                        <label class="form-label">Referencias/Ontologías consultadas</label>
+                        <textarea id="referencias" rows="5" cols="50" class="form-control"></textarea>
+                    </div>
+                    <div class="row">
+                        <label class="form-label">Notas</label>
+                        <textarea id="notas" rows="5" cols="50" class="form-control"></textarea>
+                    </div>
+                    <div class="row mt3">
+                        <div class="col col12">
+                            <button onclick="ocultarElemento('operacionExitosa')" class="btn btn-success mt-3">Aceptar</button>
+                            <button class="btn btn-success mt-3">Cancelar</button>
+                        </div>
+                    </div>
+                    <div id="operacionExitosa" class="operacionExitosa">La operación se ha realizado con éxito.</div>
+
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
