@@ -1,9 +1,20 @@
 
-const transcript = 5;
+let transcript = 5;
 const primaryKeys = [ "CHROM", "POS", "REF", "ALT", "GT", "AD", "DP", "ID", "GENE", "HGVS_C", "HGVS_P", "FEATUREID"];
-let rows,table;
+const editables = [ "HPO", "Herencia", "Relación_Fenotipo", "Candidata"];
+let rows,tableName;
 
-const openTab = (evt, tabName) => {
+const changeRowState = (e) => {
+  const row = e.path[2];
+  if((e.target.id.includes("editable-key-Candidata-") || e.target.id.includes("editable-key-Relación_Fenotipo-") )&& e.target.value == "SI"){
+    row.style["background-color"]="rgb(255, 153, 153)";
+  }
+  if(e.target.id.includes("editable-key-Candidata-") && !e.target.value){
+    row.style["background-color"]="transparent";
+  }
+}
+
+function openTab(evt, tabName) {
   // Declare all variables
   let i, tabcontent, tablinks, url;
 
@@ -12,51 +23,56 @@ const openTab = (evt, tabName) => {
 
   if (tabName == 'genesFenotipo') {
     url = "/json/genesFenotipo.json";
-  }else if (tabName == 'pathogenic'){
+  } else if (tabName == 'pathogenic') {
     url = "/json/pathogenic.json";
-  }else if (tabName == 'incidental'){
+  } else if (tabName == 'incidental') {
     url = "/json/incidental.json";
-  }else{
+  } else {
     url = "/json/todos.json";
   }
 
-  // Get all elements with class="tabcontent" and hide them
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
+  const body = document.getElementsByTagName("tbody");
+  if (!body.length) {
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+  
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (let i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(`${tabName}Section`).style.display = "block";
+    evt.currentTarget.className += "active";
+  } else {
+    body[0].style.display = "none";
   }
 
-  // Get all elements with class="tablinks" and remove the class "active"
-  tablinks = document.getElementsByClassName("tablinks");
-  for (let i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-
-  // Show the current tab, and add an "active" class to the button that opened the tab
-  document.getElementById(tabName).style.display = "block";
-  evt.currentTarget.className += " active";
 
   xhttp.onreadystatechange = () => {
     if (xhttp.readyState === 4 && xhttp.status === 200) {
-      const jsonResponse = 
-        xhttp.response.map( obj => ({
-          ...obj,
-          "GENE": obj["GENE"].split(",")[transcript], 
-          "HGVS_C": obj["HGVS_C"].split(",")[transcript], 
-          "HGVS_P": obj["HGVS_P"].split(",")[transcript], 
-          "FEATUREID": obj["FEATUREID"].split(",")[transcript], 
-          "EFFECT": obj["EFFECT"].split(",")[transcript], 
-          "IMPACT": obj["IMPACT"].split(",")[transcript], 
-          "HDIV_pred": obj["HDIV_pred"].split(",")[transcript], 
-          "HVAR_pred": obj["HVAR_pred"].split(",")[transcript], 
-          "SIFT_pred": obj["SIFT_pred"].split(",")[transcript], 
-          "Taster_pred": obj["Taster_pred"].split(",")[transcript],
-          "Assessor_pred": obj["Assessor_pred"].split(",")[transcript],
-          "ExAC_AF": obj["ExAC_AF"] ? parseFloat(obj["ExAC_AF"]).toFixed(4) : "",
-        }));
+      const jsonResponse = xhttp.response.map(obj => ({
+        ...obj,
+        "GENE": obj["GENE"].split(",")[transcript],
+        "HGVS_C": obj["HGVS_C"].split(",")[transcript],
+        "HGVS_P": obj["HGVS_P"].split(",")[transcript],
+        "FEATUREID": obj["FEATUREID"].split(",")[transcript],
+        "EFFECT": obj["EFFECT"].split(",")[transcript],
+        "IMPACT": obj["IMPACT"].split(",")[transcript],
+        "HDIV_pred": obj["HDIV_pred"].split(",")[transcript],
+        "HVAR_pred": obj["HVAR_pred"].split(",")[transcript],
+        "SIFT_pred": obj["SIFT_pred"].split(",")[transcript],
+        "Taster_pred": obj["Taster_pred"].split(",")[transcript],
+        "Assessor_pred": obj["Assessor_pred"].split(",")[transcript],
+        "ExAC_AF": obj["ExAC_AF"] ? parseFloat(obj["ExAC_AF"]).toFixed(4) : "",
+      }));
 
       rows = jsonResponse;
-      table = tabName;
+      tableName = tabName;
       renderTable(jsonResponse);
     }
   };
@@ -66,9 +82,8 @@ const openTab = (evt, tabName) => {
 }
 
 const renderTable = (jsonArray) => {
-
   // Crea un elemento <table> y un elemento <tbody>
-  const tabla = document.getElementById(table);
+  const tabla = document.getElementById(tableName);
   const tblBody = document.createElement("tbody");
   // Crea las celdas
   for (let i = 0; i < jsonArray.length; i++) {
@@ -87,19 +102,22 @@ const renderTable = (jsonArray) => {
       }
     
       const textoCelda = document.createTextNode(value || "");
-      celda.appendChild(textoCelda);
-      hilera.appendChild(celda);
+      // celda.appendChild(textoCelda);
+      // hilera.appendChild(celda);
       //fin código anterior
 
-      /*
+      
       //código con input editable
 
       if (key != "HPO" && key != "Herencia" && key != "Relación_Fenotipo" && key != "Candidata"){
         celda.appendChild(textoCelda);
       }else{
         const inputEditable = document.createElement("input");
-        inputEditable.style.border = none;
-        inputEditable.appendChild(textoCelda);
+        inputEditable.className = "editable-cell";
+        inputEditable.id = `editable-key-${key}-${i}`;
+        inputEditable.value = value || "";
+        inputEditable.onchange = changeRowState;
+        celda.appendChild(inputEditable);
       }
 
       hilera.appendChild(celda);
@@ -107,13 +125,13 @@ const renderTable = (jsonArray) => {
       //código alerta variante candidata y relación con el fenotipo si/no
 
       if(key == "Relación_Fenotipo" && value == "SI"){
-        hilera.style.background-color=rgb(255, 153, 153);
+        hilera.style["background-color"]="rgb(255, 153, 153)";
       }
 
       if(key == "Candidata" && value == "SI"){
-        hilera.style.background-color=rgb(255, 153, 153);
+        hilera.style["background-color"]="rgb(255, 153, 153)";
       }
-      */
+      
     });
 
     // agrega la hilera al final de la tabla (al final del elemento tblbody)
@@ -153,4 +171,9 @@ const showIDs = () => {
     }
   }
 
+}
+
+const filtraPorTranscripto = () =>{
+  transcript = document.getElementById("transcriptoNro").value;
+  openTab( {}, tableName);
 }

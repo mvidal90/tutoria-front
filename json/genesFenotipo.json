@@ -28,7 +28,7 @@
       "HPO": "",
       "Herencia": "",
       "Relación_Fenotipo": "",
-      "Candidata": ""
+      "Candidata": "SI"
     },
     {
       "CHROM": "chr12",
@@ -152,7 +152,7 @@
       "HPO": "",
       "Herencia": "",
       "Relación_Fenotipo": "",
-      "Candidata": ""
+      "Candidata": "SI"
     },
     {
       "CHROM": "chr12",
@@ -276,7 +276,7 @@
       "HPO": "",
       "Herencia": "",
       "Relación_Fenotipo": "",
-      "Candidata": ""
+      "Candidata": "SI"
     },
     {
       "CHROM": "chr12",
@@ -400,7 +400,7 @@
       "HPO": "",
       "Herencia": "",
       "Relación_Fenotipo": "",
-      "Candidata": ""
+      "Candidata": "SI"
     },
     {
       "CHROM": "chr12",
@@ -524,7 +524,7 @@
       "HPO": "",
       "Herencia": "",
       "Relación_Fenotipo": "",
-      "Candidata": ""
+      "Candidata": "SI"
     },
     {
       "CHROM": "chr12",
@@ -586,7 +586,7 @@
       "HPO": "",
       "Herencia": "",
       "Relación_Fenotipo": "",
-      "Candidata": ""
+      "Candidata": "SI"
     },
     {
       "CHROM": "chr12",
@@ -617,7 +617,7 @@
       "HPO": "",
       "Herencia": "",
       "Relación_Fenotipo": "",
-      "Candidata": ""
+      "Candidata": "SI"
     },
     {
       "CHROM": "chr12",
@@ -741,7 +741,7 @@
       "HPO": "",
       "Herencia": "",
       "Relación_Fenotipo": "",
-      "Candidata": ""
+      "Candidata": "SI"
     },
     {
       "CHROM": "chr12",
@@ -802,7 +802,7 @@
       "CLNSIGCONF": "",
       "HPO": "",
       "Herencia": "",
-      "Relación_Fenotipo": "",
+      "Relación_Fenotipo": "SI",
       "Candidata": ""
     },
     {

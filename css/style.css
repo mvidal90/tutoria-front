@@ -59,15 +59,20 @@ td{
     padding: 1rem;
 }
 
-  /*Styles Table*/
+.scroll-auto {
+  overflow: auto;
+}
 
-  .table-genes-scroll{
-    overflow: auto;
-  }
+/*Styles Table*/
 
-  .table-genes-head-item{
-    padding: 0 0.5rem;
-    border: 1px solid grey;
-  }
+.table-genes-scroll{
+  overflow: auto;
+}
+
+.table-genes-head-item{
+  padding: 0 0.5rem;
+  border: 1px solid grey;
+}
+
 
   

@@ -33,3 +33,8 @@
     border: 1px solid #ccc;
     border-top: none;
   }
+
+  .editable-cell {
+    border-style: none;
+    background-color: transparent;
+  }
