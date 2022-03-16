@@ -11,6 +11,7 @@ const changeRowState = (e) => {
   }
   if (e.target.id.includes("editable-key-Candidata-") && !e.target.value) {
     row.style["background-color"] = "transparent";
+    row.title=""
   }
 }
 

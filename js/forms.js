@@ -1,9 +1,11 @@
-function ocultarElemento(elemento) {
-    var x = document.getElementById(elemento);
-    if (x.style.display === 'none') {
-      x.style.display = 'block';
+function mostrarElemento(event, elemento) {
+    event.preventDefault();  
+  
+    const discleimer = document.getElementById(elemento);
+    if (discleimer.style.display === 'block') {
+      discleimer.style.display = 'none';
     } else {
-      x.style.display = 'none';
+      discleimer.style.display = 'block';
     }
   }
 
