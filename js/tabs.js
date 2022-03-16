@@ -102,10 +102,6 @@ const renderTable = (jsonArray) => {
       }
     
       const textoCelda = document.createTextNode(value || "");
-      // celda.appendChild(textoCelda);
-      // hilera.appendChild(celda);
-      //fin código anterior
-
       
       //código con input editable
 

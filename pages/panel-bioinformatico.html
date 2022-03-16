@@ -30,7 +30,7 @@
                     </div>
                     <div class="row mt3">
                         <div class="col col12">
-                            <button onclick="ocultarElemento('operacionExitosa')" class="btn btn-success mt-3">Aceptar</button>
+                            <button onclick="loadPanel()" class="btn btn-success mt-3">Aceptar</button>
                             <button class="btn btn-success mt-3">Cancelar</button>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
     <div class="container mt-3">
         <div class="row">
             <div class="col col-12 table-genes-scroll tabcontent">
-                <table id="genesFenotipo" class="table-genes">
+                <table id="panel" class="table-genes">
                     <thead class="table-genes-head">
                         <th>CHROM</th>
                         <th>POS</th>
@@ -69,3 +69,5 @@
         </div>
     </div>
 </body>
+<script src="../js/panel.js"></script>
+</html>
