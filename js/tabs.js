@@ -1,16 +1,16 @@
 
 let transcript = 5;
-const primaryKeys = [ "CHROM", "POS", "REF", "ALT", "GT", "AD", "DP", "ID", "GENE", "HGVS_C", "HGVS_P", "FEATUREID"];
-const editables = [ "HPO", "Herencia", "Relación_Fenotipo", "Candidata"];
-let rows,tableName;
+const primaryKeys = ["CHROM", "POS", "REF", "ALT", "GT", "AD", "DP", "ID", "GENE", "HGVS_C", "HGVS_P", "FEATUREID"];
+const editables = ["HPO", "Herencia", "Relación_Fenotipo", "Candidata"];
+let rows, tableName;
 
 const changeRowState = (e) => {
   const row = e.path[2];
-  if((e.target.id.includes("editable-key-Candidata-") || e.target.id.includes("editable-key-Relación_Fenotipo-") )&& e.target.value == "SI"){
-    row.style["background-color"]="rgb(255, 153, 153)";
+  if ((e.target.id.includes("editable-key-Candidata-") || e.target.id.includes("editable-key-Relación_Fenotipo-")) && e.target.value == "SI") {
+    row.style["background-color"] = "rgb(255, 153, 153)";
   }
-  if(e.target.id.includes("editable-key-Candidata-") && !e.target.value){
-    row.style["background-color"]="transparent";
+  if (e.target.id.includes("editable-key-Candidata-") && !e.target.value) {
+    row.style["background-color"] = "transparent";
   }
 }
 
@@ -31,27 +31,21 @@ function openTab(evt, tabName) {
     url = "/json/todos.json";
   }
 
-  const body = document.getElementsByTagName("tbody");
-  if (!body.length) {
-    // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
-  
-    // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablinks");
-    for (let i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    
-    // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(`${tabName}Section`).style.display = "block";
-    evt.currentTarget.className += "active";
-  } else {
-    body[0].style.display = "none";
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
   }
 
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (let i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(`${tabName}Section`).style.display = "block";
+  evt.currentTarget.className += "active";
 
   xhttp.onreadystatechange = () => {
     if (xhttp.readyState === 4 && xhttp.status === 200) {
@@ -100,14 +94,14 @@ const renderTable = (jsonArray) => {
       if (primaryKeys.includes(key)) {
         celda.id = `celda-key-${key}-${i}`;
       }
-    
+
       const textoCelda = document.createTextNode(value || "");
-      
+
       //código con input editable
 
-      if (key != "HPO" && key != "Herencia" && key != "Relación_Fenotipo" && key != "Candidata"){
+      if (key != "HPO" && key != "Herencia" && key != "Relación_Fenotipo" && key != "Candidata") {
         celda.appendChild(textoCelda);
-      }else{
+      } else {
         const inputEditable = document.createElement("input");
         inputEditable.className = "editable-cell";
         inputEditable.id = `editable-key-${key}-${i}`;
@@ -120,19 +114,19 @@ const renderTable = (jsonArray) => {
 
       //código alerta variante candidata y relación con el fenotipo si/no
 
-      if(key == "Relación_Fenotipo" && value == "SI"){
-        hilera.style["background-color"]="rgb(255, 153, 153)";
+      if (key == "Relación_Fenotipo" && value == "SI") {
+        hilera.style["background-color"] = "rgb(255, 153, 153)";
       }
 
-      if(key == "Candidata" && value == "SI"){
-        hilera.style["background-color"]="rgb(255, 153, 153)";
+      if (key == "Candidata" && value == "SI") {
+        hilera.style["background-color"] = "rgb(255, 153, 153)";
       }
-      
+
     });
 
     // agrega la hilera al final de la tabla (al final del elemento tblbody)
     tblBody.appendChild(hilera);
-  
+
   }
 
   // posiciona el <tbody> debajo del elemento <table>
@@ -152,7 +146,7 @@ const showIDs = () => {
       head.style.display = "none"
     }
   }
-  
+
   for (let i = 0; i < rows.length; i++) {
     for (let k = 0; k < primaryKeys.length; k++) {
       const celda = document.getElementById(`${textTr}${primaryKeys[k]}-${i}`);
@@ -166,7 +160,7 @@ const showIDs = () => {
 
 }
 
-const filtraPorTranscripto = () =>{
+const filtraPorTranscripto = () => {
   transcript = document.getElementById("transcriptoNro").value;
-  openTab( {}, tableName);
+  openTab({}, tableName);
 }
