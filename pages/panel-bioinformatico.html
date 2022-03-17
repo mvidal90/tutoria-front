@@ -22,7 +22,7 @@
         </div>
         <div class="row">
             <div class="col col-12 col-md-12 col-lg-8">
-                <form>
+                <form id="myForm" onsubmit="loadPanel(event)">
                 <div class="box-forms">
                     <div class="row">
                         <label class="form-label">Fenotipo (por término HPO o por enfermedad):</label>
@@ -30,8 +30,8 @@
                     </div>
                     <div class="row mt3">
                         <div class="col col12">
-                            <button onclick="loadPanel()" class="btn btn-success mt-3">Aceptar</button>
-                            <button class="btn btn-success mt-3">Cancelar</button>
+                            <button type="submit" class="btn btn-success mt-3">Aceptar</button>
+                            <button type="reset" class="btn btn-success mt-3">Cancelar</button>
                         </div>
                     </div>
                 </div>
@@ -39,9 +39,9 @@
             </div>
         </div>
     </div>
-    <div class="container mt-3">
+    <div id="divPanel" class="container mt-3 divPanelClass">
         <div class="row">
-            <div class="col col-12 table-genes-scroll tabcontent">
+            <div class="col col-12 table-genes-scroll">
                 <table id="panel" class="table-genes">
                     <thead class="table-genes-head">
                         <th>CHROM</th>

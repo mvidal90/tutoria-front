@@ -7,6 +7,7 @@ function mostrarElemento(event, elemento) {
     } else {
       discleimer.style.display = 'block';
     }
+    document.getElementById("myForm").reset();
   }
 
 

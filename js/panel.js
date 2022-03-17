@@ -1,4 +1,12 @@
-const loadPanel  = () => {
+const loadPanel = (event) => {
+    event.preventDefault();
+
+    const discleimer = document.getElementById("divPanel");
+    if (discleimer.style.display === 'block') {
+      discleimer.style.display = 'none';
+    } else {
+      discleimer.style.display = 'block';
+    }
 
     let url = "/json/panel.json"
     const xhttp = new XMLHttpRequest();
@@ -24,18 +32,24 @@ const renderTable = (jsonArray) => {
 
     // Crea las celdas
     for (let i = 0; i < jsonArray.length; i++) {
-      // Crea las hileras de la tabla
-      const hilera = document.createElement("tr");
-      const objGen = jsonArray[i];
-  
-      Object.entries(objGen).forEach(([key, value]) => {
-        // Crea un elemento <td> y un nodo de texto, haz que el nodo de
-        // texto sea el contenido de <td>, ubica el elemento <td> al final
-        // de la hilera de la tabla
-        const celda = document.createElement("td");
-        const textoCelda = document.createTextNode(value || "");
-        celda.appendChild(textoCelda);
-        hilera.appendChild(celda);
-    });
+        // Crea las hileras de la tabla
+        const hilera = document.createElement("tr");
+        const objGen = jsonArray[i];
+
+        Object.entries(objGen).forEach(([key, value]) => {
+            // Crea un elemento <td> y un nodo de texto, haz que el nodo de
+            // texto sea el contenido de <td>, ubica el elemento <td> al final
+            // de la hilera de la tabla
+            const celda = document.createElement("td");
+            const textoCelda = document.createTextNode(value || "");
+            celda.appendChild(textoCelda);
+            hilera.appendChild(celda);
+        });
+        tblBody.appendChild(hilera);
     }
+
+    // posiciona el <tbody> debajo del elemento <table>
+    tabla.appendChild(tblBody);
+    // modifica el atributo "border" de la tabla y lo fija a "2";
+    tabla.setAttribute("border", "2");
 }
