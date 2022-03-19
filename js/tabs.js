@@ -5,13 +5,17 @@ const editables = ["HPO", "Herencia", "Relación_Fenotipo", "Candidata"];
 let rows, tableName;
 
 const changeRowState = (e) => {
-  const row = e.path[2];
+  const row = e.path[3];
+  const tooltip = e.path[2];
   if ((e.target.id.includes("editable-key-Candidata-") || e.target.id.includes("editable-key-Relación_Fenotipo-")) && e.target.value == "SI") {
     row.style["background-color"] = "rgb(255, 153, 153)";
+    if (e.target.id.includes("editable-key-Candidata-") && e.target.value === "SI") {
+      tooltip.title="Encontrado en 5 pacientes"
+    }
   }
   if (e.target.id.includes("editable-key-Candidata-") && !e.target.value) {
     row.style["background-color"] = "transparent";
-    row.title=""
+    tooltip.title=""
   }
 }
 
@@ -104,11 +108,19 @@ const renderTable = (jsonArray) => {
         celda.appendChild(textoCelda);
       } else {
         const inputEditable = document.createElement("input");
+        const tooltip = document.createElement("span");
         inputEditable.className = "editable-cell";
         inputEditable.id = `editable-key-${key}-${i}`;
         inputEditable.value = value || "";
         inputEditable.onchange = changeRowState;
-        celda.appendChild(inputEditable);
+        if (key == "Relación_Fenotipo" && value == "SI") {
+          tooltip.title="Encontrado en 3 pacientes"
+        }
+        if (key == "Candidata" && value == "SI") {
+          tooltip.title="Encontrado en 3 pacientes"
+        }
+        tooltip.appendChild(inputEditable);
+        celda.appendChild(tooltip);
       }
 
       hilera.appendChild(celda);
@@ -118,7 +130,7 @@ const renderTable = (jsonArray) => {
       if (key == "Relación_Fenotipo" && value == "SI") {
         hilera.style["background-color"] = "rgb(255, 153, 153)";
       }
-
+      
       if (key == "Candidata" && value == "SI") {
         hilera.style["background-color"] = "rgb(255, 153, 153)";
       }
