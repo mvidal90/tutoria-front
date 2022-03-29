@@ -28,6 +28,7 @@ iframe {
 
 li {
   cursor: pointer;
+
 }
 
 select {
@@ -56,12 +57,32 @@ td{
     width: 15vw;
 }
 
+.menu-item{
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  border-bottom: 1px solid black;
+}
+
+.filter-item{
+  margin: 0.5rem 0;
+}
+
+.d-flex{
+display: flex;
+}
+
+.justify-content-end{
+  justify-content: end;
+  display: flex;
+}
+
 .box-filters {
     background-color: rgb(235, 232, 232);
     border-radius: 8px;
     min-height: 20px;
     margin-top: 2rem;
-    padding: 1rem;
+    margin-bottom: 2rem;
+    padding: 2rem;
 }
 
 .scroll-auto {

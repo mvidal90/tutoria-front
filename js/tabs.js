@@ -148,9 +148,10 @@ const renderTable = (jsonArray) => {
   tabla.setAttribute("border", "2");
 }
 
-const showIDs = () => {
-  const textHead = "id";
+const showIDs = (section) => {
+  const textHead = "id-"+section;
   const textTr = "celda-key-";
+  console.log("Ocultar IDs")
   for (let i = 0; i < primaryKeys.length; i++) {
     const head = document.getElementById(textHead.concat(i.toString()));
     if (head.style.display === "none") {
