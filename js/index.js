@@ -1,11 +1,11 @@
 const selectSection = (section) => {
   switch (section) {
     case "Historic":
-      document.getElementById("main-section").src = "/pages/historia-clinica.html";
+      document.getElementById("main-section").src = "/pages/historiaClinica.html";
       return;
 
     case "Filters":
-      document.getElementById("main-section").src = "/pages/variants-filtred.html";
+      document.getElementById("main-section").src = "/pages/filtradoDeVariantes.html";
       return;
 
     case "InformeRes":
@@ -17,7 +17,7 @@ const selectSection = (section) => {
     return;  
    
     case "Panel":
-      document.getElementById("main-section").src = "/pages/panel-bioinformatico.html";
+      document.getElementById("main-section").src = "/pages/panelBioinformatico.html";
       return;  
     
     default:
